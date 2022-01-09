@@ -4,9 +4,6 @@
 #define LED_COUNT 110
 Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
-int animationDelay = 2;
-int rotation = 30;
-bool open = true;
 
 const int matrix [5][22] = {
 { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21},
@@ -67,35 +64,35 @@ void setup() {
 }
 
 void loop() {
-    dataFade(120);
-    ogSpinAndFade(40, 200, 1);
-    runningLetters(110);
-    packmanKiller(90);
+    dataFade(2, 120);
+    ogSpinAndFade(40, 1, 200);
+    runningLetters(110, 80);
+    packmanKiller(90, 80);
 }
 
-void dataFade(int strength){
-    for (int i = 0; i<strength;i++){
+void dataFade(int speed, int brightness){
+    for (int i = 0; i<brightness;i++){
         genericLetter(2, 0, strip.Color(72, 149, 239), printD);
         genericLetter(7, 0, strip.Color(72, 149, 239), printA);
         genericLetter(12, 0, strip.Color(72, 149, 239), printT);
         genericLetter(17, 0, strip.Color(72, 149, 239), printA);
         strip.setBrightness(i);
         strip.show();
-        delay(animationDelay);
+        delay(speed);
     }
 
-    for(int o = strength; o>0; o--){
+    for(int o = brightness; o>0; o--){
         genericLetter(2, 0, strip.Color(72, 149, 239), printD);
         genericLetter(7, 0, strip.Color(72, 149, 239), printA);
         genericLetter(12, 0, strip.Color(72, 149, 239), printT);
         genericLetter(17, 0, strip.Color(72, 149, 239), printA);
         strip.setBrightness(o);
         strip.show();
-        delay(animationDelay);
+        delay(speed);
     }
 }
 
-void ogSpinAndFade(int speed, int brightness, int fade){
+void ogSpinAndFade(int speed, int fade, int brightness){
     strip.clear();
     strip.setPixelColor(9, 72, 12, 168);strip.setPixelColor(13, 72, 12, 168);
     strip.show();
@@ -175,9 +172,9 @@ void ogSpinAndFade(int speed, int brightness, int fade){
     }
 }
 
-void runningLetters(int speed){
+void runningLetters(int speed, int brightness){
     strip.clear();
-    strip.setBrightness(80);
+    strip.setBrightness(brightness);
     for(int i = 0; i <= 73; i++){
         //K
         genericLetter(21, i, strip.Color(255, 0, 15), printK);
@@ -224,9 +221,10 @@ void runningLetters(int speed){
     }
 }
 
-void packmanKiller(int speed){
+void packmanKiller(int speed, int brightness){
     strip.clear();
-    strip.setBrightness(80);
+    strip.setBrightness(brightness);
+    bool open = true;
     for(int i = 0; i <= 35; i++){
         if(open == true){
         genericIcon5x5(-13, i, strip.Color(255, 255, 0), printPackman);
