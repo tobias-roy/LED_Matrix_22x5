@@ -4,7 +4,7 @@
 #define LED_COUNT 110
 Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
-
+//Marks LED's in a 5x22 coordinate system. My LED's are set up in a zig zag pattern.
 const int matrix [5][22] = {
 { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21},
 { 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43},
@@ -13,7 +13,7 @@ const int matrix [5][22] = {
 { 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109}
 };
 
-//Alfabetet i 3x5
+//The alphabet in 3x5 pixel letters. Define the amount of LED's in the print array. 1's are lit - 0's are turned off.
 int printA[15] = {1,1,1,1,1, 1,0,1,0,0, 1,1,1,1,1};
 int printB[15] = {1,1,1,1,1, 1,0,1,0,1, 1,1,1,1,1};
 int printC[15] = {0,1,1,1,0, 1,0,0,0,1, 1,0,0,0,1};
@@ -52,14 +52,14 @@ int print8[15] = {1,1,1,1,1, 1,0,1,0,1, 1,1,1,1,1};
 int print9[15] = {1,1,1,0,0, 1,0,1,0,0, 1,1,1,1,1};
 int printSPACE[15] = {0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0};
 
-//Figurer i 5x5
+//Icons in 5x5 or 5x6
 int printPackman[25] = {0,1,1,1,0, 1,1,1,1,1, 1,0,1,1,1, 1,1,0,1,1, 1,0,0,0,1};
 int printPackmanClosed[30] = {0,1,1,1,0, 1,1,1,1,1, 1,0,1,1,1, 1,1,1,1,1, 1,1,1,1,1, 0,1,1,1,0};
 int printGhost[25] = {0,1,1,1,1, 1,0,1,1,0, 1,1,1,1,1, 1,0,1,1,0, 0,1,1,1,1};
 
 void setup() {
-    strip.begin();           // INITIALIZE NeoPixel strip object (REQUIRED)
-    strip.show();            // Turn OFF all pixels ASAP
+    strip.begin(); //This initializes the NeoPixel library for LED control.
+    strip.show();  //This resets all LED's
     strip.setBrightness(0);
 }
 
@@ -72,7 +72,7 @@ void loop() {
 
 void dataFade(int speed, int brightness){
     for (int i = 0; i<brightness;i++){
-        genericLetter(2, 0, strip.Color(72, 149, 239), printD);
+        genericLetter(2, 0, strip.Color(72, 149, 239), printD); //genericLetter values for: Row to place the most leftside of char, iteration for placement, color, what to print (leds 1 or 0) called through the array.
         genericLetter(7, 0, strip.Color(72, 149, 239), printA);
         genericLetter(12, 0, strip.Color(72, 149, 239), printT);
         genericLetter(17, 0, strip.Color(72, 149, 239), printA);
@@ -240,34 +240,34 @@ void packmanKiller(int speed, int brightness){
     }
 }
 
-void genericLetter(int start, int i, uint32_t rgb, int array[]){
-    int column1 = start - i;
-    int column2 = column1 + 1;
-    int column3 = column1 + 2;
-    if(column1 >= 0 && column1 <= 21){
-        for(int j = 0; j <= 4; j++){
-            if(array[j] == 1){
-                strip.setPixelColor(matrix[j][column1], rgb);
-            }
+void genericLetter(int start, int i, uint32_t rgb, int letterArray[]){
+    int column1 = start - i;    //Defines start column, i defines the movement
+    int column2 = column1 + 1;  //Defines 2nd column
+    int column3 = column1 + 2;  //Defines 3rd column
+    if(column1 >= 0 && column1 <= 21){      //Makes sure the column is in bounds of the LED matrix before it initiates the LED's. If this is not setup properly the LEDS will change rows.
+        for(int j = 0; j <= 4; j++){    //This is set to loop 5 times since we have 5 rows and it only loops through column 1 once.
+            if(letterArray[j] == 1){    //Checks wether or not the LED in the first column is on or off.
+                strip.setPixelColor(matrix[j][column1], rgb);   //If the LED is specified to 1 the specified placement in the matrix will be picked by the row and column values and set to a color value to turn on.
+            }                                                   //j is defined as the first value in matrix = row, column1 is defined as the specific LED in that column, from the defined start and i (for movement).
         }
     }
     if(column2 >= 0 && column2 <= 21){
         for(int j = 0; j <= 4; j++){
-            if(array[j + 5] == 1){
+            if(letterArray[j + 5] == 1){ //Checks wether or not the LED in the second column is on or off, thus starting from the 5th value in the array.
                 strip.setPixelColor(matrix[j][column2], rgb);
             }
         }
     }
     if(column3 >= 0 && column3 <= 21){
         for(int j = 0; j <= 4; j++){
-            if(array[j + 10] == 1){
+            if(letterArray[j + 10] == 1){
                 strip.setPixelColor(matrix[j][column3], rgb);
             }
         }
     }
 }
 
-void genericIcon5x5(int start, int i, uint32_t rgb, int array[]){
+void genericIcon5x5(int start, int i, uint32_t rgb, int letterArray[]){
     int column1 = start + i;
     int column2 = column1 + 1;
     int column3 = column1 + 2;
@@ -275,42 +275,42 @@ void genericIcon5x5(int start, int i, uint32_t rgb, int array[]){
     int column5 = column1 + 4;
     if(column1 >= 0 && column1 <= 21){
         for(int j = 0; j <= 4; j++){
-            if(array[j] == 1){
+            if(letterArray[j] == 1){
                 strip.setPixelColor(matrix[j][column1], rgb);
             }
         }
     }
     if(column2 >= 0 && column2 <= 21){
         for(int j = 0; j <= 4; j++){
-            if(array[j + 5] == 1){
+            if(letterArray[j + 5] == 1){
                 strip.setPixelColor(matrix[j][column2], rgb);
             }
         }
     }
     if(column3 >= 0 && column3 <= 21){
         for(int j = 0; j <= 4; j++){
-            if(array[j + 10] == 1){
+            if(letterArray[j + 10] == 1){
                 strip.setPixelColor(matrix[j][column3], rgb);
             }
         }
     }
     if(column4 >= 0 && column4 <= 21){
         for(int j = 0; j <= 4; j++){
-            if(array[j + 15] == 1){
+            if(letterArray[j + 15] == 1){
                 strip.setPixelColor(matrix[j][column4], rgb);
             }
         }
     }
     if(column5 >= 0 && column5 <= 21){
         for(int j = 0; j <= 4; j++){
-            if(array[j + 20] == 1){
+            if(letterArray[j + 20] == 1){
                 strip.setPixelColor(matrix[j][column5], rgb);
             }
         }
     }
 }
 
-void genericIcon6x5(int start, int i, uint32_t rgb, int array[]){
+void genericIcon6x5(int start, int i, uint32_t rgb, int letterArray[]){
     int column1 = start + i;
     int column2 = column1 + 1;
     int column3 = column1 + 2;
@@ -319,42 +319,42 @@ void genericIcon6x5(int start, int i, uint32_t rgb, int array[]){
     int column6 = column1 + 5;
     if(column1 >= 0 && column1 <= 21){
         for(int j = 0; j <= 4; j++){
-            if(array[j] == 1){
+            if(letterArray[j] == 1){
                 strip.setPixelColor(matrix[j][column1], rgb);
             }
         }
     }
     if(column2 >= 0 && column2 <= 21){
         for(int j = 0; j <= 4; j++){
-            if(array[j + 5] == 1){
+            if(letterArray[j + 5] == 1){
                 strip.setPixelColor(matrix[j][column2], rgb);
             }
         }
     }
     if(column3 >= 0 && column3 <= 21){
         for(int j = 0; j <= 4; j++){
-            if(array[j + 10] == 1){
+            if(letterArray[j + 10] == 1){
                 strip.setPixelColor(matrix[j][column3], rgb);
             }
         }
     }
     if(column4 >= 0 && column4 <= 21){
         for(int j = 0; j <= 4; j++){
-            if(array[j + 15] == 1){
+            if(letterArray[j + 15] == 1){
                 strip.setPixelColor(matrix[j][column4], rgb);
             }
         }
     }
     if(column5 >= 0 && column5 <= 21){
         for(int j = 0; j <= 4; j++){
-            if(array[j + 20] == 1){
+            if(letterArray[j + 20] == 1){
                 strip.setPixelColor(matrix[j][column5], rgb);
             }
         }
     }
     if(column6 >= 0 && column6 <= 21){
         for(int j = 0; j <= 4; j++){
-            if(array[j + 25] == 1){
+            if(letterArray[j + 25] == 1){
                 strip.setPixelColor(matrix[j][column6], rgb);
             }
         }
