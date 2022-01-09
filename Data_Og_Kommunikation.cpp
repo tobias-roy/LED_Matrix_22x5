@@ -72,10 +72,10 @@ void loop() {
 
 void dataFade(int speed, int brightness){
     for (int i = 0; i<brightness;i++){
-        genericLetter(2, 0, strip.Color(72, 149, 239), printD); //genericLetter values for: Row to place the most leftside of char, iteration for placement, color, what to print (leds 1 or 0) called through the array.
-        genericLetter(7, 0, strip.Color(72, 149, 239), printA);
-        genericLetter(12, 0, strip.Color(72, 149, 239), printT);
-        genericLetter(17, 0, strip.Color(72, 149, 239), printA);
+        genericLetter(2, 0, strip.Color(72, 149, 239), printD); //GenericLetter values for: //Row to place the most leftside of char
+        genericLetter(7, 0, strip.Color(72, 149, 239), printA);                             //Iteration for placement
+        genericLetter(12, 0, strip.Color(72, 149, 239), printT);                            //Color
+        genericLetter(17, 0, strip.Color(72, 149, 239), printA);                            //what to print (leds 1 or 0) called through the array.
         strip.setBrightness(i);
         strip.show();
         delay(speed);
