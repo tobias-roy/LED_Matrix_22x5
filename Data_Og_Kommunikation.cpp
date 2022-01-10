@@ -6,7 +6,7 @@ Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
 //Multidimensional Array Marks LED's in a 5x22 coordinate system. My LED's are set up in a zig zag pattern.
 const int matrix [5][22] = {
-{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21},
+{ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9,  10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21},
 { 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43},
 { 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65},
 { 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87},
@@ -94,78 +94,56 @@ void dataFade(int speed, int brightness){
 
 void ogSpinAndFade(int speed, int fade, int brightness){
     strip.clear();
-    strip.setPixelColor(9, 72, 12, 168);strip.setPixelColor(13, 72, 12, 168);
+        strip.setPixelColor(9, 72, 12, 168);
+        strip.setPixelColor(13, 72, 12, 168);
     strip.show();
     delay(speed);
-
-    //2
-    strip.clear();
-    strip.setPixelColor(8, 72, 12, 168);strip.setPixelColor(9, 72, 12, 168);strip.setPixelColor(12, 72, 12, 168);strip.setPixelColor(13, 72, 12, 168);
+        strip.setPixelColor(8, 72, 12, 168);
+        strip.setPixelColor(12, 72, 12, 168);
     strip.show();
     delay(speed);
-
-    //3
-    strip.clear();
-    strip.setPixelColor(7, 72, 12, 168);strip.setPixelColor(8, 72, 12, 168);strip.setPixelColor(9, 72, 12, 168);strip.setPixelColor(11, 72, 12, 168);strip.setPixelColor(12, 72, 12, 168);strip.setPixelColor(13, 72, 12, 168);
+        strip.setPixelColor(7, 72, 12, 168);
     strip.show();
     delay(speed);
-
-    //4
-    strip.clear();
-    strip.setPixelColor(7, 72, 12, 168);strip.setPixelColor(8, 72, 12, 168);strip.setPixelColor(9, 72, 12, 168);strip.setPixelColor(11, 72, 12, 168);strip.setPixelColor(12, 72, 12, 168);strip.setPixelColor(13, 72, 12, 168);strip.setPixelColor(29, 72, 12, 168);strip.setPixelColor(33, 72, 12, 168);
+        strip.setPixelColor(29, 72, 12, 168);
+        strip.setPixelColor(33, 72, 12, 168);
     strip.show();
     delay(speed);
-
-    //5
-    strip.clear();
-    strip.setPixelColor(7, 72, 12, 168);strip.setPixelColor(8, 72, 12, 168);strip.setPixelColor(9, 72, 12, 168);strip.setPixelColor(11, 72, 12, 168);strip.setPixelColor(12, 72, 12, 168);strip.setPixelColor(13, 72, 12, 168);strip.setPixelColor(29, 72, 12, 168);strip.setPixelColor(33, 72, 12, 168);strip.setPixelColor(51, 72, 12, 168);strip.setPixelColor(55, 72, 12, 168);
+        strip.setPixelColor(51, 72, 12, 168);
+        strip.setPixelColor(55, 72, 12, 168);
     strip.show();
     delay(speed);
-
-    //6
-    strip.clear();
-    strip.setPixelColor(7, 72, 12, 168);strip.setPixelColor(8, 72, 12, 168);strip.setPixelColor(9, 72, 12, 168);strip.setPixelColor(11, 72, 12, 168);strip.setPixelColor(12, 72, 12, 168);strip.setPixelColor(13, 72, 12, 168);strip.setPixelColor(29, 72, 12, 168);strip.setPixelColor(33, 72, 12, 168);strip.setPixelColor(51, 72, 12, 168);strip.setPixelColor(55, 72, 12, 168);strip.setPixelColor(73, 72, 12, 168);strip.setPixelColor(77, 72, 12, 168);
+        strip.setPixelColor(73, 72, 12, 168);
+        strip.setPixelColor(77, 72, 12, 168);
     strip.show();
     delay(speed);
-
-    //7
-    strip.clear();
-    strip.setPixelColor(7, 72, 12, 168);strip.setPixelColor(8, 72, 12, 168);strip.setPixelColor(9, 72, 12, 168);strip.setPixelColor(11, 72, 12, 168);strip.setPixelColor(12, 72, 12, 168);strip.setPixelColor(13, 72, 12, 168);strip.setPixelColor(29, 72, 12, 168);strip.setPixelColor(33, 72, 12, 168);strip.setPixelColor(51, 72, 12, 168);strip.setPixelColor(55, 72, 12, 168);strip.setPixelColor(73, 72, 12, 168);strip.setPixelColor(77, 72, 12, 168);strip.setPixelColor(95, 72, 12, 168);strip.setPixelColor(99, 72, 12, 168);
+        strip.setPixelColor(95, 72, 12, 168);
     strip.show();
     delay(speed);
-
-    //8
-    strip.clear();
-    strip.setPixelColor(7, 72, 12, 168);strip.setPixelColor(8, 72, 12, 168);strip.setPixelColor(9, 72, 12, 168);strip.setPixelColor(11, 72, 12, 168);strip.setPixelColor(12, 72, 12, 168);strip.setPixelColor(13, 72, 12, 168);strip.setPixelColor(29, 72, 12, 168);strip.setPixelColor(33, 72, 12, 168);strip.setPixelColor(51, 72, 12, 168);strip.setPixelColor(55, 72, 12, 168);strip.setPixelColor(73, 72, 12, 168);strip.setPixelColor(77, 72, 12, 168);strip.setPixelColor(95, 72, 12, 168);strip.setPixelColor(96, 72, 12, 168);strip.setPixelColor(99, 72, 12, 168);strip.setPixelColor(100, 72, 12, 168);
+        strip.setPixelColor(96, 72, 12, 168);
+        strip.setPixelColor(100, 72, 12, 168);
     strip.show();
     delay(speed);
-
-    //9
-    strip.clear();
-    strip.setPixelColor(7, 72, 12, 168);strip.setPixelColor(8, 72, 12, 168);strip.setPixelColor(9, 72, 12, 168);strip.setPixelColor(11, 72, 12, 168);strip.setPixelColor(12, 72, 12, 168);strip.setPixelColor(13, 72, 12, 168);strip.setPixelColor(29, 72, 12, 168);strip.setPixelColor(33, 72, 12, 168);strip.setPixelColor(51, 72, 12, 168);strip.setPixelColor(55, 72, 12, 168);strip.setPixelColor(73, 72, 12, 168);strip.setPixelColor(77, 72, 12, 168);strip.setPixelColor(95, 72, 12, 168);strip.setPixelColor(96, 72, 12, 168);strip.setPixelColor(97, 72, 12, 168);strip.setPixelColor(99, 72, 12, 168);strip.setPixelColor(100, 72, 12, 168);strip.setPixelColor(101, 72, 12, 168);
+        strip.setPixelColor(97, 72, 12, 168);
+        strip.setPixelColor(101, 72, 12, 168);
     strip.show();
     delay(speed);
-
-    //10
-    strip.clear();
-    strip.setPixelColor(7, 72, 12, 168);strip.setPixelColor(8, 72, 12, 168);strip.setPixelColor(9, 72, 12, 168);strip.setPixelColor(11, 72, 12, 168);strip.setPixelColor(12, 72, 12, 168);strip.setPixelColor(13, 72, 12, 168);strip.setPixelColor(29, 72, 12, 168);strip.setPixelColor(33, 72, 12, 168);strip.setPixelColor(51, 72, 12, 168);strip.setPixelColor(55, 72, 12, 168);strip.setPixelColor(73, 72, 12, 168);strip.setPixelColor(75, 72, 12, 168);strip.setPixelColor(77, 72, 12, 168);strip.setPixelColor(79, 72, 12, 168);strip.setPixelColor(95, 72, 12, 168);strip.setPixelColor(96, 72, 12, 168);strip.setPixelColor(97, 72, 12, 168);strip.setPixelColor(99, 72, 12, 168);strip.setPixelColor(100, 72, 12, 168);strip.setPixelColor(101, 72, 12, 168);
+        strip.setPixelColor(75, 72, 12, 168);
+        strip.setPixelColor(79, 72, 12, 168);
     strip.show();
     delay(speed);
-
-    //11
-    strip.clear();
-    strip.setPixelColor(7, 72, 12, 168);strip.setPixelColor(8, 72, 12, 168);strip.setPixelColor(9, 72, 12, 168);strip.setPixelColor(11, 72, 12, 168);strip.setPixelColor(12, 72, 12, 168);strip.setPixelColor(13, 72, 12, 168);strip.setPixelColor(29, 72, 12, 168);strip.setPixelColor(33, 72, 12, 168);strip.setPixelColor(51, 72, 12, 168);strip.setPixelColor(53, 72, 12, 168);strip.setPixelColor(55, 72, 12, 168);strip.setPixelColor(57, 72, 12, 168);strip.setPixelColor(73, 72, 12, 168);strip.setPixelColor(75, 72, 12, 168);strip.setPixelColor(77, 72, 12, 168);strip.setPixelColor(79, 72, 12, 168);strip.setPixelColor(95, 72, 12, 168);strip.setPixelColor(96, 72, 12, 168);strip.setPixelColor(97, 72, 12, 168);strip.setPixelColor(99, 72, 12, 168);strip.setPixelColor(100, 72, 12, 168);strip.setPixelColor(101, 72, 12, 168);
+        strip.setPixelColor(53, 72, 12, 168);
+        strip.setPixelColor(57, 72, 12, 168);
     strip.show();
     delay(speed);
-
-    //12
-    strip.clear();
-    strip.setPixelColor(7, 72, 12, 168);strip.setPixelColor(8, 72, 12, 168);strip.setPixelColor(9, 72, 12, 168);strip.setPixelColor(11, 72, 12, 168);strip.setPixelColor(12, 72, 12, 168);strip.setPixelColor(13, 72, 12, 168);strip.setPixelColor(29, 72, 12, 168);strip.setPixelColor(31, 72, 12, 168);strip.setPixelColor(33, 72, 12, 168);strip.setPixelColor(51, 72, 12, 168);strip.setPixelColor(53, 72, 12, 168);strip.setPixelColor(55, 72, 12, 168);strip.setPixelColor(57, 72, 12, 168);strip.setPixelColor(73, 72, 12, 168);strip.setPixelColor(75, 72, 12, 168);strip.setPixelColor(77, 72, 12, 168);strip.setPixelColor(79, 72, 12, 168);strip.setPixelColor(95, 72, 12, 168);strip.setPixelColor(96, 72, 12, 168);strip.setPixelColor(97, 72, 12, 168);strip.setPixelColor(99, 72, 12, 168);strip.setPixelColor(100, 72, 12, 168);strip.setPixelColor(101, 72, 12, 168);
+        strip.setPixelColor(31, 72, 12, 168);
     strip.show();
     delay(speed);
 
     for(int o = brightness; o>0; o--){
-        strip.setPixelColor(7, 72, 12, 168);strip.setPixelColor(8, 72, 12, 168);strip.setPixelColor(9, 72, 12, 168);strip.setPixelColor(11, 72, 12, 168);strip.setPixelColor(12, 72, 12, 168);strip.setPixelColor(13, 72, 12, 168);strip.setPixelColor(29, 72, 12, 168);strip.setPixelColor(31, 72, 12, 168);strip.setPixelColor(33, 72, 12, 168);strip.setPixelColor(51, 72, 12, 168);strip.setPixelColor(53, 72, 12, 168);strip.setPixelColor(55, 72, 12, 168);strip.setPixelColor(57, 72, 12, 168);strip.setPixelColor(73, 72, 12, 168);strip.setPixelColor(75, 72, 12, 168);strip.setPixelColor(77, 72, 12, 168);strip.setPixelColor(79, 72, 12, 168);strip.setPixelColor(95, 72, 12, 168);strip.setPixelColor(96, 72, 12, 168);strip.setPixelColor(97, 72, 12, 168);strip.setPixelColor(99, 72, 12, 168);strip.setPixelColor(100, 72, 12, 168);strip.setPixelColor(101, 72, 12, 168);
+        strip.clear();
+        genericLetter(letterPlacement(0) - 10, 0, strip.Color(190, 0, 236), printO); //7
+        genericLetter(letterPlacement(0) - 6, 0, strip.Color(190, 0, 236), printG); //11
         strip.setBrightness(o);
         strip.show();
         delay(fade);
@@ -177,43 +155,43 @@ void runningLetters(int speed, int brightness){
     strip.setBrightness(brightness);
     for(int i = 0; i <= 73; i++){
         //K
-        genericLetter(21, i, strip.Color(255, 0, 15), printK);
+        genericLetter(letterPlacement(1), i, strip.Color(255, 0, 15), printK);
 
         //O
-        genericLetter(25, i, strip.Color(255, 0, 31), printO);
+        genericLetter(letterPlacement(2), i, strip.Color(255, 0, 31), printO);
 
         //M
-        genericLetter(29, i, strip.Color(255, 0, 52), printM);
+        genericLetter(letterPlacement(3), i, strip.Color(255, 0, 52), printM);
 
         //M
-        genericLetter(33, i, strip.Color(255, 0, 71), printM);
+        genericLetter(letterPlacement(4), i, strip.Color(255, 0, 71), printM);
 
         //U
-        genericLetter(37, i, strip.Color(255, 0, 90), printU);
+        genericLetter(letterPlacement(5), i, strip.Color(255, 0, 90), printU);
 
         //N
-        genericLetter(41, i, strip.Color(255, 0, 109), printN);
+        genericLetter(letterPlacement(6), i, strip.Color(255, 0, 109), printN);
 
         //I
-        genericLetter(45, i, strip.Color(255, 0, 130), printI);
+        genericLetter(letterPlacement(7), i, strip.Color(255, 0, 130), printI);
 
         //K
-        genericLetter(49, i, strip.Color(255, 0, 151), printK);
+        genericLetter(letterPlacement(8), i, strip.Color(255, 0, 151), printK);
 
         //A
-        genericLetter(53, i, strip.Color(250, 0, 173), printA);
+        genericLetter(letterPlacement(9), i, strip.Color(250, 0, 173), printA);
 
         //T
-        genericLetter(57, i, strip.Color(235, 0, 194), printT);
+        genericLetter(letterPlacement(10), i, strip.Color(235, 0, 194), printT);
         
         //I
-        genericLetter(61, i, strip.Color(216, 0, 215), printI);
+        genericLetter(letterPlacement(11), i, strip.Color(216, 0, 215), printI);
 
         //O
-        genericLetter(65, i, strip.Color(190, 0, 236), printO);
+        genericLetter(letterPlacement(12), i, strip.Color(190, 0, 236), printO);
 
         //N
-        genericLetter(69, i, strip.Color(157, 0, 255), printN);
+        genericLetter(letterPlacement(13), i, strip.Color(157, 0, 255), printN);
 
         strip.show();
         delay(speed);
@@ -238,6 +216,11 @@ void packmanKiller(int speed, int brightness){
         delay(speed);
         strip.clear();
     }
+}
+
+int letterPlacement(int placering){
+    placering = placering * 4 + 17;
+    return placering;
 }
 
 void genericLetter(int start, int i, uint32_t rgb, int letterArray[]){
