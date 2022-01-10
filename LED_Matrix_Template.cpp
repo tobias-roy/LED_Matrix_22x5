@@ -64,134 +64,17 @@ void setup() {
 }
 
 void loop() {
-    dataFade(2, 120);
-    ogSpinAndFade(40, 1, 200);
     runningLetters(110, 80);
-    packmanKiller(90, 80);
-}
-
-void dataFade(int speed, int brightness){
-    for (int i = 0; i<brightness;i++){
-        genericLetter(2, 0, strip.Color(72, 149, 239), printD); //GenericLetter values for: //Row to place the most leftside of char
-        genericLetter(7, 0, strip.Color(72, 149, 239), printA);                             //Iteration for placement
-        genericLetter(12, 0, strip.Color(72, 149, 239), printT);                            //Color
-        genericLetter(17, 0, strip.Color(72, 149, 239), printA);                            //what to print (leds 1 or 0) called through the array.
-        strip.setBrightness(i);
-        strip.show();
-        delay(speed);
-    }
-
-    for(int o = brightness; o>0; o--){
-        genericLetter(2, 0, strip.Color(72, 149, 239), printD);
-        genericLetter(7, 0, strip.Color(72, 149, 239), printA);
-        genericLetter(12, 0, strip.Color(72, 149, 239), printT);
-        genericLetter(17, 0, strip.Color(72, 149, 239), printA);
-        strip.setBrightness(o);
-        strip.show();
-        delay(speed);
-    }
-}
-
-void ogSpinAndFade(int speed, int fade, int brightness){
-    strip.clear();
-        strip.setPixelColor(9, 72, 12, 168);
-        strip.setPixelColor(13, 72, 12, 168);
-    strip.show();
-    delay(speed);
-        strip.setPixelColor(8, 72, 12, 168);
-        strip.setPixelColor(12, 72, 12, 168);
-    strip.show();
-    delay(speed);
-        strip.setPixelColor(7, 72, 12, 168);
-    strip.show();
-    delay(speed);
-        strip.setPixelColor(29, 72, 12, 168);
-        strip.setPixelColor(33, 72, 12, 168);
-    strip.show();
-    delay(speed);
-        strip.setPixelColor(51, 72, 12, 168);
-        strip.setPixelColor(55, 72, 12, 168);
-    strip.show();
-    delay(speed);
-        strip.setPixelColor(73, 72, 12, 168);
-        strip.setPixelColor(77, 72, 12, 168);
-    strip.show();
-    delay(speed);
-        strip.setPixelColor(95, 72, 12, 168);
-    strip.show();
-    delay(speed);
-        strip.setPixelColor(96, 72, 12, 168);
-        strip.setPixelColor(100, 72, 12, 168);
-    strip.show();
-    delay(speed);
-        strip.setPixelColor(97, 72, 12, 168);
-        strip.setPixelColor(101, 72, 12, 168);
-    strip.show();
-    delay(speed);
-        strip.setPixelColor(75, 72, 12, 168);
-        strip.setPixelColor(79, 72, 12, 168);
-    strip.show();
-    delay(speed);
-        strip.setPixelColor(53, 72, 12, 168);
-        strip.setPixelColor(57, 72, 12, 168);
-    strip.show();
-    delay(speed);
-        strip.setPixelColor(31, 72, 12, 168);
-    strip.show();
-    delay(speed);
-
-    for(int o = brightness; o>0; o--){
-        strip.clear();
-        genericLetter(letterPlacement(0) - 10, 0, strip.Color(190, 0, 236), printO); //7
-        genericLetter(letterPlacement(0) - 6, 0, strip.Color(190, 0, 236), printG); //11
-        strip.setBrightness(o);
-        strip.show();
-        delay(fade);
-    }
+    //packmanKiller(90, 80);
 }
 
 void runningLetters(int speed, int brightness){
     strip.clear();
     strip.setBrightness(brightness);
     for(int i = 0; i <= 73; i++){
-        //K
-        genericLetter(letterPlacement(1), i, strip.Color(255, 0, 15), printK);
 
-        //O
-        genericLetter(letterPlacement(2), i, strip.Color(255, 0, 31), printO);
+       // genericLetter(letterPlacement(1), i, strip.Color(255, 0, 15), printK);
 
-        //M
-        genericLetter(letterPlacement(3), i, strip.Color(255, 0, 52), printM);
-
-        //M
-        genericLetter(letterPlacement(4), i, strip.Color(255, 0, 71), printM);
-
-        //U
-        genericLetter(letterPlacement(5), i, strip.Color(255, 0, 90), printU);
-
-        //N
-        genericLetter(letterPlacement(6), i, strip.Color(255, 0, 109), printN);
-
-        //I
-        genericLetter(letterPlacement(7), i, strip.Color(255, 0, 130), printI);
-
-        //K
-        genericLetter(letterPlacement(8), i, strip.Color(255, 0, 151), printK);
-
-        //A
-        genericLetter(letterPlacement(9), i, strip.Color(250, 0, 173), printA);
-
-        //T
-        genericLetter(letterPlacement(10), i, strip.Color(235, 0, 194), printT);
-        
-        //I
-        genericLetter(letterPlacement(11), i, strip.Color(216, 0, 215), printI);
-
-        //O
-        genericLetter(letterPlacement(12), i, strip.Color(190, 0, 236), printO);
-
-        //N
-        genericLetter(letterPlacement(13), i, strip.Color(157, 0, 255), printN);
         strip.show();
         delay(speed);
         strip.clear();
